@@ -1,0 +1,98 @@
+version: 2
+registries:
+  jfrog:
+    type: docker-registry
+    url: jfrog.ais.acquia.io
+    username: github_dependabot_token
+    password: ${{secrets.JFROG_GITHUB_DEPENDABOT_TOKEN}}
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      gomod-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "gomod"
+    directory: "/scripts"
+    schedule:
+      interval: "weekly"
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      gomod-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    registries:
+      - jfrog
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/examples/example-client-http2"
+    schedule:
+      interval: "weekly"
+    registries:
+      - jfrog
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/examples/example-client-urlquery"
+    schedule:
+      interval: "weekly"
+    registries:
+      - jfrog
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/examples/example-client"
+    schedule:
+      interval: "weekly"
+    registries:
+      - jfrog
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/examples/grpcc"
+    schedule:
+      interval: "weekly"
+    registries:
+      - jfrog
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      github-actions-dependencies:
+        patterns:
+          - "*"
